@@ -5,14 +5,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key = "1db80b4a39af4e15bc34520d3084ed1d"
+api_key = os.getenv('NEWS_API_KEY')
 
 class NewsAPI:
     def __init__(self, api_key):
         self.api_key = api_key
 
     def get_news(self, query, num_news):
-        url = f'https://newsapi.org/v2/everything?q={query}&from=2023-09-16&sortBy=popularity&pageSize={num_news}&language=en&apiKey=1db80b4a39af4e15bc34520d3084ed1d'
+        url = f'https://newsapi.org/v2/everything?q={query}&from=2023-09-16&sortBy=popularity&pageSize={num_news}&language=en&apiKey={self.api_key}'
         
         response = requests.get(url)
         
